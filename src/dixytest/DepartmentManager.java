@@ -3,7 +3,6 @@ package dixytest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -25,11 +24,11 @@ public class DepartmentManager {
         mainList.addAll(Arrays.asList(departents));
       
         //объявляем и инициализируем коллекцию, в которую будут добавляться 
-        //нехватающие строки. Set- потому что хранит только не более одного
-        //экземпляра объекта-значения.
+        //нехватающие строки. Set- потому что хранит не более одного
+        //экземпляра объекта-значения. Избавит нас от доп. проверок
         Set<String> toAdd = new HashSet<>();
         
-        //массив, в который будут помещаться разбитые строки 
+        //массив, в который будут помещаться разбитые делителем строки 
         String[] depCodes = null;
         
         //делитель строк, заданный в задании. 
@@ -43,8 +42,8 @@ public class DepartmentManager {
         
         //  Добавляем недостающие строки:
         //    Для этого сначала делим исходные строки на составные подстроки, а затем,
-        //    добавляя по одной подстроке, проверяем, нужно ли добавить получившуюся
-        //    строку temp.
+        //    добавляя к строке temp по одной подстроке, проверяем, нужно ли добавить
+        //    получившуюся строку temp.
         for (String departent : mainList) {
             //очищаем StringBuilder
             stb = new StringBuilder("");
@@ -65,13 +64,14 @@ public class DepartmentManager {
             }
         }
       
-
+        //добавляем недостающие строки в основную коллекцию
         mainList.addAll(toAdd);
-
+        
+        //сортируем заданным в задании способом
         mainList.sort(new MyComparator(delimetr));
  
         //Теперь, когда мы знаем, сколько элементов будет в отсортированном массиве,
-        // инициализируем его
+        //инициализируем его
         result = new String[mainList.size()];
               
         //заполняем
@@ -106,12 +106,8 @@ public class DepartmentManager {
                     break;
                 }
             }
-            //если после сравнения res = 0, возвращаем разницы длинны строк
+            //если после сравнения res = 0, возвращаем разницу длин строк
             return res == 0 ? array1.length - array2.length : res;
-          
         }
-
-        
     }
-    
 }
