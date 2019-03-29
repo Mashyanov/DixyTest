@@ -11,7 +11,7 @@ import java.util.Set;
 
 /**
  *
- * @author Александр
+ * @author Александр Машьянов, mashyanov1987@gmail.com
  */
 public class DepartmentManager {
     
