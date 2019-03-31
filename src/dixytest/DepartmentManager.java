@@ -106,7 +106,7 @@ public class DepartmentManager {
                     break;
                 }
             }
-            //если после сравнения res = 0, возвращаем разницу длин строк
+            //если после сравнения res == 0, возвращаем разницу длин строк
             return res == 0 ? array1.length - array2.length : res;
         }
     }
